@@ -4,6 +4,7 @@ import NamesList from './components/NamesList/NamesList';
 import AlertUser from './components/AlertUser/AlertUser';
 import SuperheroTable from './components/SuperheroTable/SuperheroTable';
 import SuperheroCreateForm from './components/SuperheroCreateForm/SuperheroCreateForm';
+import DisplayJoke from './components/DisplayJoke/DisplayJoke';
 
 class App extends Component {
   constructor(props){
@@ -56,6 +57,7 @@ class App extends Component {
         <AlertUser alertUser={this.alertUser} />
         <SuperheroTable superheroes={this.state.superheroes} />
         <SuperheroCreateForm createNewSuperhero={this.createNewSuperhero} />
+        <DisplayJoke  />
       </div>
     )
   };
