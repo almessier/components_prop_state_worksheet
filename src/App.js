@@ -3,6 +3,7 @@ import DisplayName from './components/DisplayName/DisplayName';
 import NamesList from './components/NamesList/NamesList';
 import AlertUser from './components/AlertUser/AlertUser';
 import SuperheroTable from './components/SuperheroTable/SuperheroTable';
+import SuperheroCreateForm from './components/SuperheroCreateForm/SuperheroCreateForm';
 
 class App extends Component {
   constructor(props){
@@ -38,13 +39,23 @@ class App extends Component {
     alert('devCodeCamp');
   }
 
+  createNewSuperhero = (newSuperHero) => {
+    let newListOfSuperheroes = this.state.superheroes;
+    newSuperHero.superheroId = newListOfSuperheroes.length + 1;
+    newListOfSuperheroes.push(newSuperHero);
+    this.setState({
+      superheroes: newListOfSuperheroes
+    })
+  }
+
   render(){
     return (
       <div className='container'>
-          <DisplayName firstName={this.state.firstName} lastName={this.state.lastName} />
-          <NamesList names={this.state.names}/>
-          <AlertUser alertUser={this.alertUser} />
-          <SuperheroTable superheroes={this.state.superheroes} />
+        <DisplayName firstName={this.state.firstName} lastName={this.state.lastName} />
+        <NamesList names={this.state.names}/>
+        <AlertUser alertUser={this.alertUser} />
+        <SuperheroTable superheroes={this.state.superheroes} />
+        <SuperheroCreateForm createNewSuperhero={this.createNewSuperhero} />
       </div>
     )
   };
