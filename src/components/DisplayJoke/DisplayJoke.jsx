@@ -6,12 +6,29 @@ class DisplayJoke extends React.Component {
         jokes: []
     }
 
+    // componentDidMount() {
+    //     axios.get(`https://v2.jokeapi.dev/joke/Programming?amount=5`)
+    //     .then((response) => {
+    //         const jokes = response.data;
+    //         this.setState(jokes);
+    //     })
+    // }
+
     componentDidMount() {
-        axios.get(`https://v2.jokeapi.dev/joke/Programming?amount=5`)
-        .then((response) => {
-            const jokes = response.data;
-            this.setState(jokes);
-        })
+        this.getJokes();
+    }
+
+    async getJokes() {
+        try{
+            let response = await axios.get('https://v2.jokeapi.dev/joke/Programming?amount=5');
+            console.log(response.data);
+            this.setState({
+                jokes: response.data.jokes
+            });
+        }
+        catch (ex) {
+            console.log('Error in API call');
+        }
     }
 
     render() {
